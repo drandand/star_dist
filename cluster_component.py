@@ -1,5 +1,5 @@
 """
-component.py
+cluster_component.py
 
 Contains the class definition for the Component class.
 A single cluster is composed of one or more components which

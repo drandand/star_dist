@@ -1,5 +1,5 @@
 """
-common.py
+cluster_common.py
 
 Set of common elements useful for the cluster generation.
 """

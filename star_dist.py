@@ -1,5 +1,5 @@
 """
-custom.py
+star_dist.py
 
 Main executable for creating and displaying collections of star clusters
 """
@@ -11,7 +11,7 @@ import yaml
 import numpy as np
 import matplotlib.pyplot as plt
 
-import simulation
+import cluster_simulation as cs
 import cluster_common as cc
 
 
@@ -48,7 +48,7 @@ def compose(config: Dict[str, Any]) -> Tuple[
         Tuple containing the mass, position and velocity vector defining the
         cluster
     """
-    sim = simulation.Simulation(config=config[cc.SIMULATION])
+    sim = cs.Simulation(config=config[cc.SIMULATION])
 
     mass = []
     pos = []

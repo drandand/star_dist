@@ -1,5 +1,5 @@
 """
-simulation.py
+cluster_simulation.py
 
 The simulator module contains the main configuration information defining the
 location and mass distributions for the stars in the simulation.
@@ -9,7 +9,7 @@ from typing import Dict, Any, List, Tuple
 import numpy as np
 from pint.facets.plain import PlainQuantity
 
-import cluster
+import cluster as cl
 import cluster_common as cc
 import cluster_parser as cp
 
@@ -25,11 +25,27 @@ class Simulation:
     """
 
     def __init__(self, config: dict):
-        cc.validate(config=config, keys={cc.TIME_STEP, cc.STEPS, cc.CLUSTERS})
+        cc.validate(
+            config=config,
+            keys={
+                cc.NAME,
+                cc.TIME_STEP,
+                cc.STEPS,
+                cc.CLUSTERS,
+            },
+        )
+        self._name: str = cp.select(src=config, key=cc.NAME)
         self._time_step = cp.parse_unit(config[cc.TIME_STEP])
         self._steps: int = int(cp.select(src=config, key=cc.STEPS))
         clusters = cp.select(src=config, key=cc.CLUSTERS)
-        self._clusters = [cluster.Cluster(config=cfg) for cfg in clusters]
+        self._clusters = [cl.Cluster(config=cfg) for cfg in clusters]
+
+    @property
+    def name(self) -> str:
+        """
+        Property containing the name of the simulation
+        """
+        return self._name
 
     @property
     def time_step(self) -> PlainQuantity:
@@ -44,7 +60,7 @@ class Simulation:
         return self._steps
 
     @property
-    def clusters(self) -> List[cluster.Cluster]:
+    def clusters(self) -> List[cl.Cluster]:
         """Property containing the list of clusters for the simulation"""
         return self._clusters
 
