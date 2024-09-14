@@ -1,0 +1,252 @@
+simulation:
+  name: "Simple Cluster"
+  time_step:
+    value: 100
+    units: "year"
+  steps: 1000
+  clusters:
+  - name: "foo"
+    offset:
+      x:
+        value: 0.0
+        units: "kiloparsec"
+      y:
+        value: 0.0
+        units: "kiloparsec"
+      z:
+        value: 0.0
+        units: "kiloparsec"
+    motion:
+      x:
+        value: 0.0
+        units: "kilometer / second"
+      y:
+        value: 0.0
+        units: "kilometer / second"
+      z:
+        value: 0.0
+        units: "kilometer / second"
+    orientation:
+      axis:
+        x: 0.0
+        y: 0.0
+        z: 1.0
+      theta:
+        value: 0.0
+        units: "radian"
+    components:
+    - name: "bulge"
+      star_count: 2000
+      position_distribution:
+        ellipsoid:
+          ellipsoid_shape:
+            a: 1.0
+            b: 1.0
+            c: 1.0
+          distance:
+            exponential:
+              scale:
+                value: 2.0
+                units: "kiloparsec"
+      mass_distribution:
+        exponential:
+          scale:
+            value: 10
+            units: "solar_mass"
+      component_motion:
+        fixed_vector:
+          x:
+            value: 0.0
+            units: "kilometer / second"
+          y:
+            value: 0.0
+            units: "kilometer / second"
+          z:
+            value: 0.0
+            units: "kilometer / second"
+      render:
+        r: 1.0
+        g: 1.0
+        b: 1.0
+        radius: 1.0
+    - name: "disk"
+      star_count: 3
+      position_distribution:
+        cylinder:
+          axial_distribution:
+            normal:
+              mean:
+                value: 0.0
+                units: "pc"
+              stdev:
+                value: 50
+                units: "pc"
+          radial_distribution:
+            exponential:
+              scale:
+                value: 10.0
+                units: "kpc"
+          orientation:
+            axis:
+              x: 0.0
+              y: 0.0
+              z: 1.0
+            theta:
+              value: 0
+              units: "radian"
+      mass_distribution:
+        exponential:
+          scale:
+            value: 10
+            units: "solar_mass"
+      component_motion:
+        fixed_vector:
+          x:
+            value: 0.0
+            units: "kilometer / second"
+          y:
+            value: 0.0
+            units: "kilometer / second"
+          z:
+            value: 0.0
+            units: "kilometer / second"
+      render:
+        r: 0.0
+        g: 0.0
+        b: 1.0
+        radius: 5
+    - name: "spiral_arm_1"
+      star_count: 4000
+      position_distribution:
+        spiral:
+          phase:
+            value: 0
+            units: "degree"
+          frequency: -4.0
+          growth:
+            value: 1.0
+            units: "kpc"
+          angle_distribution:
+            normal:
+              mean:
+                value: 45.0
+                units: degrees
+              stdev:
+                value: 45.0
+                units: degrees
+          offset_distribution:
+            ellipsoid:
+              ellipsoid_shape:
+                a: 1.0
+                b: 1.0
+                c: 1.0
+              distance:
+                exponential:
+                  scale:
+                    value: 500
+                    units: "parsec"
+      mass_distribution:
+        exponential:
+          scale:
+            value: 10
+            units: "solar_mass"
+      component_motion:
+        fixed_vector:
+          x:
+            value: 0.0
+            units: "kilometer / second"
+          y:
+            value: 0.0
+            units: "kilometer / second"
+          z:
+            value: 0.0
+            units: "kilometer / second"
+      render:
+        r: 0.0
+        g: 0.0
+        b: 1.0
+        radius: 5
+    - name: "spiral_arm_2"
+      star_count: 4000
+      position_distribution:
+        spiral:
+          phase:
+            value: 180
+            units: "degree"
+          frequency: -4.0
+          growth:
+            value: 1.0
+            units: "kpc"
+          angle_distribution:
+            normal:
+              mean:
+                value: 45.0
+                units: degrees
+              stdev:
+                value: 45.0
+                units: degrees
+          offset_distribution:
+            ellipsoid:
+              ellipsoid_shape:
+                a: 1.0
+                b: 1.0
+                c: 1.0
+              distance:
+                exponential:
+                  scale:
+                    value: 500
+                    units: "parsec"
+      mass_distribution:
+        exponential:
+          scale:
+            value: 10
+            units: "solar_mass"
+      component_motion:
+        fixed_vector:
+          x:
+            value: 0.0
+            units: "kilometer / second"
+          y:
+            value: 0.0
+            units: "kilometer / second"
+          z:
+            value: 0.0
+            units: "kilometer / second"
+      render:
+        r: 0.0
+        g: 0.0
+        b: 1.0
+        radius: 5
+    - name: "single"
+      star_count: 1
+      position_distribution:
+        fixed_vector:
+          x:
+            value: 0.0
+            units: "kiloparsec"
+          y:
+            value: 0.0
+            units: "kiloparsec"
+          z:
+            value: 0.0
+            units: "kiloparsec"
+      mass_distribution:
+        fixed_scalar:
+          value: 1.0e+12
+          units: "solar_mass"
+      component_motion:
+        fixed_vector:
+          x:
+            value: 0.0
+            units: "kilometer / second"
+          y:
+            value: 0.0
+            units: "kilometer / second"
+          z:
+            value: 0.0
+            units: "kilometer / second"
+      render:
+        r: 0.0
+        g: 0.0
+        b: 1.0
+        radius: 5
